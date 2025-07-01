@@ -44,6 +44,12 @@ def run_repl():
             elif command == "redo":
                 calc.history.redo()
                 print("Redo successful.")
+            elif command == "save":
+                calc.history.save_to_file()
+                print("History saved.")
+            elif command == "load":
+                calc.history.load_from_file()
+                print("History loaded.")
             else:
                 print("Unknown command.")
         except Exception as e:
