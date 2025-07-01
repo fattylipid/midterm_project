@@ -2,10 +2,18 @@ from app.calculator import Calculator
 from app.operations import OperationFactory
 from app.input_validators import validate_number, validate_within_range
 from app.calculator_config import CalculatorConfig
+from app.logger import LoggerObserver
+from app.autosave import AutoSaveObserver
 
 def run_repl():
     calc = Calculator()
     CalculatorConfig.ensure_directories()
+
+    calc = Calculator()
+    calc.register_observer(LoggerObserver())
+
+    if CalculatorConfig.AUTO_SAVE:
+        calc.register_observer(AutoSaveObserver())
 
     print("Welcome to Enhanced Calculator. Type 'help' for commands.")
     
@@ -30,6 +38,12 @@ def run_repl():
             elif command == "history":
                 for c in calc.history.get_history():
                     print(c)
+            elif command == "undo":
+                calc.history.undo()
+                print("Last calculation undone.")
+            elif command == "redo":
+                calc.history.redo()
+                print("Redo successful.")
             else:
                 print("Unknown command.")
         except Exception as e:
