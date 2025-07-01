@@ -3,6 +3,8 @@ import os
 from app.calculator_config import CalculatorConfig
 from app.calculator_memento import CalculatorMemento
 from app.exceptions import OperationError
+from app.operations import OperationFactory
+from app.calculation import Calculation
 
 class CalculatorHistory:
     def __init__(self):
