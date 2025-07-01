@@ -1,0 +1,8 @@
+operation,a,b,result,timestamp
+AddOperation,3.0,3.0,6.0,2025-06-30 22:07:15.178312
+PowerOperation,3.0,3.0,27.0,2025-06-30 22:07:18.358562
+RootOperation,9.0,2.0,3.0,2025-06-30 22:07:23.070469
+ModulusOperation,10.0,3.0,1.0,2025-06-30 22:07:26.459374
+IntegerDivisionOperation,8.0,2.0,4.0,2025-06-30 22:07:33.319045
+PercentageOperation,100.0,50.0,200.0,2025-06-30 22:07:37.971391
+AbsoluteDifferenceOperation,10.0,5.0,5.0,2025-06-30 22:07:45.339323

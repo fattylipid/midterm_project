@@ -1,0 +1,17 @@
+2025-06-30 22:00:52,276 - INFO - AddOperation(3.0, 3.0) = 6.0
+2025-06-30 22:01:01,655 - INFO - PercentageOperation(5.0, 10.0) = 50.0
+2025-06-30 22:01:16,207 - INFO - PowerOperation(2.0, 2.0) = 4.0
+2025-06-30 22:01:20,089 - INFO - RootOperation(4.0, 5.0) = 1.3195079107728942
+2025-06-30 22:01:26,713 - INFO - RootOperation(4.0, 2.0) = 2.0
+2025-06-30 22:01:33,888 - INFO - ModulusOperation(10.0, 3.0) = 1.0
+2025-06-30 22:01:38,585 - INFO - IntegerDivisionOperation(1.0, 1.0) = 1.0
+2025-06-30 22:01:43,672 - INFO - AbsoluteDifferenceOperation(3.0, 4.0) = 1.0
+2025-06-30 22:02:06,761 - INFO - AddOperation(1.0, 1.0) = 2.0
+2025-06-30 22:06:29,038 - INFO - AddOperation(4.0, 5.0) = 9.0
+2025-06-30 22:07:15,178 - INFO - AddOperation(3.0, 3.0) = 6.0
+2025-06-30 22:07:18,358 - INFO - PowerOperation(3.0, 3.0) = 27.0
+2025-06-30 22:07:23,070 - INFO - RootOperation(9.0, 2.0) = 3.0
+2025-06-30 22:07:26,459 - INFO - ModulusOperation(10.0, 3.0) = 1.0
+2025-06-30 22:07:33,319 - INFO - IntegerDivisionOperation(8.0, 2.0) = 4.0
+2025-06-30 22:07:37,971 - INFO - PercentageOperation(100.0, 50.0) = 200.0
+2025-06-30 22:07:45,339 - INFO - AbsoluteDifferenceOperation(10.0, 5.0) = 5.0
