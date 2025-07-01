@@ -3,76 +3,78 @@ from app.operations import OperationFactory
 from app.input_validators import validate_number, validate_within_range
 from app.calculator_config import CalculatorConfig
 from app.logger import LoggerObserver
-from app.autosave import AutoSaveObserver
+from app.history import AutoSaveObserver
 
 def run_repl():
-    calc = Calculator()
     CalculatorConfig.ensure_directories()
-
     calc = Calculator()
-    calc.register_observer(LoggerObserver())
 
+    # Register observers
+    calc.register_observer(LoggerObserver())
     if CalculatorConfig.AUTO_SAVE:
         calc.register_observer(AutoSaveObserver())
 
-    print("Welcome to Enhanced Calculator. Type 'help' for commands.")
-    
+    # ✅ Define this BEFORE it's used
     valid_commands = [
-    "add", "power", "root", "modulus",
-    "int_divide", "percent", "abs_diff"
-]
+        "add", "power", "root", "modulus",
+        "int_divide", "percent", "abs_diff"
+    ]
 
-while True:
-    try:
-        command = input("> ").strip().lower()
+    print("Welcome to Enhanced Calculator. Type 'help' for commands.")
 
-        if command == "exit":
-            print("Goodbye!")
-            break
+    while True:
+        try:
+            command = input("> ").strip().lower()
 
-        elif command == "help":
-            print("""Available commands: add, power, root, modulus, int_divide, percent, abs_diff, history, undo, redo, clear, save, load, help, exit""")
+            if command == "exit":
+                print("Goodbye!")
+                break
 
-        elif command in valid_commands:
-            a = validate_number(input("Enter first number: "))
-            b = validate_number(input("Enter second number: "))
-            a = validate_within_range(a, CalculatorConfig.MAX_INPUT_VALUE)
-            b = validate_within_range(b, CalculatorConfig.MAX_INPUT_VALUE)
+            elif command == "help":
+                print("""Available commands:
+add, power, root, modulus, int_divide, percent, abs_diff
+history, undo, redo, clear, save, load, help, exit
+""")
 
-            operation = OperationFactory.get_operation(command)
-            result = calc.perform_operation(operation, a, b)
-            print(f"Result: {round(result, CalculatorConfig.PRECISION)}")
+            elif command in valid_commands:
+                a = validate_number(input("Enter first number: "))
+                b = validate_number(input("Enter second number: "))
+                a = validate_within_range(a, CalculatorConfig.MAX_INPUT_VALUE)
+                b = validate_within_range(b, CalculatorConfig.MAX_INPUT_VALUE)
 
-        elif command == "history":
-            for c in calc.history.get_history():
-                print(c)
+                operation = OperationFactory.get_operation(command)
+                result = calc.perform_operation(operation, a, b)
+                print(f"Result: {round(result, CalculatorConfig.PRECISION)}")
 
-        elif command == "undo":
-            calc.history.undo()
-            print("Last calculation undone.")
+            elif command == "history":
+                for c in calc.history.get_history():
+                    print(c)
 
-        elif command == "redo":
-            calc.history.redo()
-            print("Redo successful.")
+            elif command == "undo":
+                calc.history.undo()
+                print("Last calculation undone.")
 
-        elif command == "clear":
-            calc.history.clear()
-            print("History cleared.")
+            elif command == "redo":
+                calc.history.redo()
+                print("Redo successful.")
 
-        elif command == "save":
-            calc.history.save_to_file()
-            print("History saved.")
+            elif command == "clear":
+                calc.history.clear()
+                print("History cleared.")
 
-        elif command == "load":
-            calc.history.load_from_file()
-            print("History loaded.")
+            elif command == "save":
+                calc.history.save_to_file()
+                print("History saved.")
 
-        else:
-            print("Unknown command. Type 'help' to see available options.")
+            elif command == "load":
+                calc.history.load_from_file()
+                print("History loaded.")
 
-    except Exception as e:
-        print(f"Error: {e}")
+            else:
+                print("Unknown command. Type 'help' to see available options.")
 
+        except Exception as e:
+            print(f"Error: {e}")
 
 if __name__ == "__main__":
     run_repl()
